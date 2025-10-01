@@ -1,47 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Cryptic Codex</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=IM+Fell+English&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Night Ledger • Ritual Journal</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="A gothic ritualistic journal of nocturnal devotions, dreams, symbols, and invocations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fonts: one serif, one display (fallbacks included) -->
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/sigil-star.svg" />
+  <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
-    <header class="tome-cover">
-        <h1>The Lexicon of Forgotten Deities</h1>
-        <p class="subtitle">A Record of Sacred Rites and Secret Thoughts</p>
-    </header>
+  <a class="skip-link" href="#journal-list">Skip to journal entries</a>
+  <header class="site-header">
+    <div class="sigil-cluster" aria-hidden="true">
+      <!-- 8-pointed star -->
+      <svg class="sigil star8" viewBox="0 0 100 100">
+        <polygon points="10,10 50,0 90,10 100,50 90,90 50,100 10,90 0,50" />
+        <polygon class="rot" points="10,10 50,0 90,10 100,50 90,90 50,100 10,90 0,50" />
+      </svg>
+      <!-- Pentagram -->
+      <svg class="sigil pent" viewBox="0 0 100 100">
+        <path d="M50 3 L61 38 H98 L68 59 L79 95 L50 73 L21 95 L32 59 L2 38 H39 Z" />
+      </svg>
+    </div>
+    <h1 class="site-title">Night Ledger</h1>
+    <p class="subtitle">Whispers to Inanna, Ishtar &amp; the Shadowed Lilith</p>
+    <nav class="top-nav" aria-label="Site navigation">
+      <ul>
+        <li><a href="index.html" class="active">Journal</a></li>
+        <li><a href="about.html">About / Praxis</a></li>
+        <li><a href="glyphs.html">Glyphs &amp; Symbols</a></li>
+      </ul>
+    </nav>
+    <form id="search-form" role="search" aria-label="Search posts">
+      <input id="search" name="q" type="search" placeholder="Search invocations, dreams, rites..." aria-label="Search journal" />
+      <button type="submit" aria-label="Execute search">Search</button>
+      <button type="button" id="clear-search" aria-label="Clear search" hidden>&times;</button>
+    </form>
+    <div id="tag-bar" class="tag-bar" aria-label="Filter by tag">
+      <!-- tags injected -->
+    </div>
+  </header>
 
-    <main class="journal-container">
-        <article class="journal-entry">
-            <time datetime="2025-10-31" class="entry-date">The Night of Samhain, 2025</time>
-            <section class="entry-content">
-                <h2 class="entry-title">Invocation to the Veiled Mother</h2>
-                <p>The veil thins. Tonight, the air is thick with the scent of cypress and aged parchment. I laid the offerings—a sprig of wormwood and a shard of obsidian—at the altar. May the Moon witness this covenant.</p>
-            </section>
-        </article>
+  <main id="main-content">
+    <section id="journal-list" class="journal-list" aria-live="polite">
+      <noscript>
+        <p class="warning">JavaScript is disabled. Enable it to load the dynamic journal entries.</p>
+      </noscript>
+      <!-- Cards inject here -->
+    </section>
+    <template id="journal-card-template">
+      <article class="journal-card">
+        <a class="card-link" href="#">
+          <div class="card-media"></div>
+          <div class="card-content">
+            <h2 class="card-title"></h2>
+            <time class="card-date" datetime=""></time>
+            <p class="card-excerpt"></p>
+            <ul class="card-tags" aria-label="Tags"></ul>
+          </div>
+        </a>
+      </article>
+    </template>
+    <div class="empty-state" id="empty-state" hidden>
+      <p>No entries match your search / tag filter.</p>
+    </div>
+  </main>
 
-        <article class="journal-entry">
-            <time datetime="2025-10-25" class="entry-date">The Gibbous Phase</time>
-            <section class="entry-content">
-                <h2 class="entry-title">The Dream of the Horned One</h2>
-                <p>A vision in the smoke: a stag with eyes of emerald, beckoning towards a megalithic ruin. The ancient spirits stir. Must record the symbols seen in the scrying mirror...</p>
-            </section>
-        </article>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Night Ledger. Devotional &amp; reflective writings. All rites reserved.</p>
+    <p class="micro">Crafted under moonlit variables &amp; ancient stars.</p>
+  </footer>
 
-        <section class="input-form">
-            <h2>Scribe a New Rite</h2>
-            <form>
-                <input type="text" placeholder="Entry Title (e.g., The Solstice Rite)" required>
-                <textarea rows="8" placeholder="The sacred text begins here..." required></textarea>
-                <button type="submit">Seal the Chronicle</button>
-            </form>
-        </section>
-    </main>
-
-    <footer class="tome-spine">
-        <p>&copy; The Temple Archives, Unspoken Era</p>
-    </footer>
+  <script src="scripts/util.js" defer></script>
+  <script src="posts/posts.js" defer></script>
+  <script src="scripts/index.js" defer></script>
 </body>
 </html>
